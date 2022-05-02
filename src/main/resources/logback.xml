@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true" scan="true">
+    <include resource="org/springframework/boot/logging/logback/defaults.xml" />
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml" />
+
+    <property name="LOG_DIR" value="../logs" />
+    <property name="LOG_PATH_NAME" value="${LOG_DIR}/" />
+    <property name="FILE_NAME" value="demo-oauth" />
+
+    <!-- FILE Appender -->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH_NAME}/${FILE_NAME}.log</file>
+        <!-- 일자별 로그파일 저장 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH_NAME}/%d{yyyy, aux}/%d{MM, aux}/${FILE_NAME}_%d{yyyyMMdd}.log</fileNamePattern>
+            <!-- 일자별 로그파일 저장 기간 설정 -->
+            <maxHistory>365</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>[%d{yyyy-MM-dd}] [%d{HH:mm:ss.SSS}] [%p] [%thread] [%c{1}] [%F:%L [%m]%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <!-- [2018-08-17] [15:24:21.355] [log level] [logName]      [class.java line]       [message] -->
+            <!--     날짜           시간       로그레벨    로거이름   로그인클래스.java 몇번째줄    로그메세지 -->
+            <pattern>[%d{yyyy-MM-dd}] [%d{HH:mm:ss.SSS}] [%p] [%thread] [%c{1}] [%F:%L [%m]%n</pattern>
+        </layout>
+    </appender>
+
+    <!-- Loggers -->
+    <logger name="org.springframework.core" additivity="false">
+        <level value="info" />
+        <appender-ref ref="FILE"/>
+        <appender-ref ref="STDOUT"/>
+    </logger>
+
+    <logger name="org.springframework.beans" additivity="false">
+        <level value="info" />
+        <appender-ref ref="FILE"/>
+        <appender-ref ref="STDOUT"/>
+    </logger>
+
+    <logger name="org.springframework.context" additivity="false">
+        <level value="info" />
+        <appender-ref ref="FILE"/>
+        <appender-ref ref="STDOUT"/>
+    </logger>
+
+    <logger name="org.springframework.web" additivity="false">
+        <level value="info" />
+        <appender-ref ref="FILE"/>
+        <appender-ref ref="STDOUT"/>
+    </logger>
+
+    <logger name="java.sql" additivity="false">
+        <level value="debug" />
+        <appender-ref ref="FILE"/>
+        <appender-ref ref="STDOUT"/>
+    </logger>
+
+    <logger name="org.mybatis.spring" additivity="false">
+        <level value="debug" />
+        <appender-ref ref="FILE"/>
+        <appender-ref ref="STDOUT"/>
+    </logger>
+
+    <logger name="org.hibernate.SQL" additivity="false">
+        <level value="debug" />
+        <appender-ref ref="FILE"/>
+        <appender-ref ref="STDOUT"/>
+    </logger>
+
+    <logger name="com.example.oauth.demo" additivity="false">
+        <level value="debug" />
+        <appender-ref ref="FILE"/>
+        <appender-ref ref="STDOUT"/>
+    </logger>
+
+    <!-- 모든 로그 출력 (파일/콘솔) -->
+    <root level="debug" additivity="false">
+        <appender-ref ref="FILE"/>
+        <appender-ref ref="STDOUT"/>
+    </root>
+</configuration>

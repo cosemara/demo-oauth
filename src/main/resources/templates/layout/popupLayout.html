@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<meta content="yes" name="apple-mobile-web-capable" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover">
+	<meta charset="utf-8">
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=block" rel="stylesheet">
+	<title>팝업페이지</title>
+	<script type="text/javascript" th:src="|@{/js/Common.js}?v3|"></script>
+	<script type="text/javascript" th:src="|@{/js/jquery-1.8.2.min.js}|"></script>
+	<script type="text/javascript" th:src="|@{/js/jquery.oLoader.min.js}|"></script>
+	<script type="text/javascript" th:src="@{/js/isMobile.min.js}"></script>
+</head>
+<body>
+	<!-- page content body 구성 -->
+	<th:block layout:fragment="content"></th:block>
+</body>
+</html>

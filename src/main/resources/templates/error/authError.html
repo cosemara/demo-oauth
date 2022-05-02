@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	  data-layout-decorate="~{layout/errorLayout}">
+
+<head>
+	<style type="text/css">
+		.error_wrap {box-sizing:border-box; position:absolute; top:50%; left:0; width:100%; padding:0 2em; transform:translateY(-50%); text-align:center; font-family:'Apple SD Gothic Neo', 'Noto Sans', 'Noto Sans KR', '맑은 고딕', 'malgun gothic', 'AppleGothicNeoSD', 'Apple SD 산돌고딕 Neo', 'Microsoft NeoGothic',  'Droid sans', sans-serif;}
+		.error_wrap span.icon {display:inline-block; line-height:1;}
+		.error_wrap span.icon img {display:inline-block; width:3.375em; vertical-align:top;}
+		.error_wrap > div {padding:1em 0 1.125em; color:#545454;}
+		.error_wrap strong {font-size:1.25em;}
+		.error_wrap p {margin:0; padding:0.5em 0 0; font-size:1.125em; line-height:1.25em;}
+		.error_wrap a,
+		.error_wrap button {display:inline-block; padding:0.5em 2em; background-color:#444; border-radius:4px; color:#fff; font-weight:400; text-decoration:none; font-size:0.875em;}
+		.error_wrap a span,
+		.error_wrap button span {display:inline-block; line-height:1em;}
+	</style>
+</head>
+
+<th:block layout:fragment="content">
+	<div class="error_wrap">
+		<span class="icon"><img th:src="@{/images/ico_notice.png}" alt="오류"></span>
+		<div>
+			<strong>죄송합니다.</strong>
+			<p>접근 권한이 없습니다.</p>
+		</div>
+		<!--		<a href="#g"><span>뒤로가기</span></a>-->
+	</div>
+</th:block>
